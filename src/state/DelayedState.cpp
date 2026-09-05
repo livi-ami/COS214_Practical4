@@ -10,8 +10,7 @@ void DelayedState::resume(Vehicle& vehicle) {
               << previousState->getName() << ".\n";
     VehicleState* target = previousState;
     vehicle.setState(target);
-    delete this; // safe: this instance was created solely for this delay episode
-                 // and nothing else holds a pointer to it after this call.
+    delete this;
 }
  
 std::string DelayedState::describe() const {

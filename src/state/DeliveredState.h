@@ -3,9 +3,7 @@
 
 #include "VehicleState.h"
 
-// Terminal state. Deliberately overrides nothing beyond getName()/describe(),
-// so every action (load/depart/arrive/delay/resume) falls through to the
-// base class and is rejected - a delivered vehicle's lifecycle is over.
+//terminal state
 class DeliveredState : public VehicleState {
 public:
     static DeliveredState* instance();
