@@ -3,7 +3,7 @@
  
 #include <string>
  
-class Vehicle; // forward declaration - avoids circular include with Vehicle.h
+class Vehicle;
 
 class VehicleState {
 public:
