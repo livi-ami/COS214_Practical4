@@ -1,7 +1,11 @@
-FROM ubuntu:latest AS build
+FROM ubuntu:24.04 AS build
 
 RUN apt-get update && apt-get install -y build-essential
 
-WORKDIR /taskforgeApp
+WORKDIR /app
 
-COPY . .
+COPY hello/ .
+
+RUN g++ -o hello hello.cpp -static
+
+CMD ["./hello"]
