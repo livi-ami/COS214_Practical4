@@ -9,7 +9,7 @@ LoadedState* LoadedState::instance() {
 }
 
 void LoadedState::depart(Vehicle& vehicle) {
-    std::cout << "Vehicle " << vehicle.getId() << " departs and is now in transit.\n";
+    std::cout << "Vehicle " << vehicle.getId() << " is departing and is now in transit.\n";
     vehicle.setState(InTransitState::instance());
 }
 

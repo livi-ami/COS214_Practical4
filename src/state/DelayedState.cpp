@@ -1,7 +1,7 @@
 #include "DelayedState.h"
 #include "../vehicle/Vehicle.h"
 #include <iostream>
- 
+
 DelayedState::DelayedState(VehicleState* previousState)
     : previousState(previousState) {}
  

@@ -3,7 +3,7 @@
 
 #include "VehicleState.h"
 
-//terminal state
+// terminal state
 class DeliveredState : public VehicleState {
 public:
     static DeliveredState* instance();
