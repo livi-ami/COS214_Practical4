@@ -8,7 +8,7 @@ int main() {
     transport = new InspectionDecorator("GOOD", transport);
     transport = new InsuranceCoverageDecorator("INSURED", transport);
 
-    transport->print();  // normal system behavior
+    transport->print();
 
     delete transport;
 }
