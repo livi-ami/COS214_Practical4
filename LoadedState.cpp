@@ -1,6 +1,6 @@
 #include "LoadedState.h"
 #include "InTransitState.h"
-#include "../vehicle/Vehicle.h"
+#include "Vehicle.h"
 #include <iostream>
 
 LoadedState* LoadedState::instance() {
