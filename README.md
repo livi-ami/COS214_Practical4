@@ -5,11 +5,11 @@ TaskForge is a hierarchical work-processing system for a sea and inland vehicle 
 A hierarchical work-processing system built around four core design patterns: **Composite**, **Iterator**, **State**, and **Decorator**.
 
 ## Table of Contents
-- [Building the Project](#building-the-project)
 - [Composite](#composite)
 - [Iterator](#iterator)
 - [State](#state)
 - [Decorator](#decorator)
+- [Building the Project](#building-the-project)
 - [Running with Docker](#running-with-docker)
 - [Team](#team)
 
