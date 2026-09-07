@@ -1,14 +1,17 @@
 # COS214 Practical 4 — TaskForge
 
+TaskForge is a hierarchical work-processing system for a sea and inland vehicle transport domain. A **Fleet** contains **Ships**, each **Ship** contains **CargoHolds**, and each **CargoHold** carries individual **Vehicles**. The system makes meaningful use of four Gang of Four patterns — **Composite** (the nested Fleet/Ship/CargoHold/Vehicle hierarchy), **Iterator** (traversing that hierarchy without exposing its internals), **State** (each Vehicle's lifecycle), and **Decorator** (optional runtime handling requirements on a Vehicle) — combined into a single coherent system rather than four separate demos.
+
 A hierarchical work-processing system built around four core design patterns: **Composite**, **Iterator**, **State**, and **Decorator**.
 
 ## Table of Contents
+- [Building the Project](#building-the-project)
 - [Composite](#composite)
 - [Iterator](#iterator)
 - [State](#state)
 - [Decorator](#decorator)
-- [How It All Works Together](#how-it-all-works-together)
 - [Running with Docker](#running-with-docker)
+- [Team](#team)
 
 ---
 
@@ -46,11 +49,13 @@ There are 3 decorators that our system uses, namely:
 - **`InsuranceCoverageDecorator`** — states whether a unit is insured or not.
 - **`CustomsClearanceDecorator`** — currently displays a supplied status from the client.
 
-## How It All Works Together
+## Building the Project
 
-*(section to be completed)*
-
----
+```bash
+make          # builds the taskforge executable
+./taskforge   # runs it
+make clean    # removes build artifacts
+```
 
 ## Running with Docker
 
@@ -64,3 +69,12 @@ docker rm taskforgeApp
 # Run the container
 docker run --name taskforgeApp taskforge-img
 ```
+
+## Team
+
+| Student Name | Student Number |
+| -------- | -------- |
+| Thembelisha Skosana | u |
+| Joshua Piater-Boswell | u |
+| Livia Webber | u24607852 |
+
