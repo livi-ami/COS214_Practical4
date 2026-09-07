@@ -1,55 +1,27 @@
 #include "Vehicle.h"
-#include "VehicleState.h"
-#include "WaitingToLoadState.h"
-#include <string>
-#include <iostream>
-using namespace std;
+#include "../state/WaitingToLoadState.h"
 
-Vehicle::Vehicle(){
-    id = "ERROR";
-    state = WaitingToLoadState::instance();
-}
+Vehicle::Vehicle(const std::string& id)
+    : id(id), currentState(WaitingToLoadState::instance()) {}
 
-Vehicle::Vehicle(string id):id(id){
-    state = WaitingToLoadState::instance();
-}
-
-Vehicle::~Vehicle(){
-}
-
-void Vehicle::addUnit(TransportUnit* unit){
-    cout<<"Cannot add to "<<id<<" since it is a vehicle"<<endl;
-}
-
-void Vehicle::add(TransportUnit* unit){
-    addUnit(unit);
-}
-
-vector<TransportUnit*>& Vehicle::getChildren(){
-    static vector<TransportUnit*> noChildren;
-    return noChildren;
-}
-
-VehicleState* Vehicle::getState() const{
-    return state;
-}
-
-void Vehicle::setState(VehicleState* state){
-    this->state = state;
-}
-
-string Vehicle::getId(){
-    return id;
-}
-
-void Vehicle::depart(TransportUnit& unit) {
-    if (state) {
-        state->depart(*this); 
+Vehicle::~Vehicle() {
+    if (currentState->isTemporary()) {
+        delete currentState;
     }
 }
-std::string Vehicle::getStatus() {
-    if (state != nullptr) {
-        return "Vehicle " + id + " [" + state->getName() + "]";
-    }
-    return "Vehicle " + id + " [No State]";
+
+void Vehicle::load()   { currentState->load(*this); }
+void Vehicle::depart() { currentState->depart(*this); }
+void Vehicle::arrive() { currentState->arrive(*this); }
+void Vehicle::delay()  { currentState->delay(*this); }
+void Vehicle::resume() { currentState->resume(*this); }
+
+std::string Vehicle::getStatus() const { return currentState->getName(); }
+
+std::string Vehicle::report() const {
+    return "Vehicle " + id + " is " + currentState->describe();
+}
+
+void Vehicle::setState(VehicleState* newState) {
+    currentState = newState;
 }

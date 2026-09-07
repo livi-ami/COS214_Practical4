@@ -1,29 +1,31 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
-#include "TransportUnit.h"
-#include <string>
-#include <vector>
-using namespace std;
 
-class VehicleState;
+#include "../composite/TransportUnit.h"
+#include "../state/VehicleState.h"
+#include <string>
 
 class Vehicle : public TransportUnit {
-protected:
-    Vehicle();
-private:
-    VehicleState* state;
-    std::string id;
 public:
-    Vehicle(std::string id);
-    ~Vehicle();
-    void addUnit(TransportUnit* unit) override;
-    void add(TransportUnit* unit) override;
-    std::vector<TransportUnit*>& getChildren() override;
-    VehicleState* getState() const override;
-    void setState(VehicleState* state);
-    std::string getId();
-    
-    void depart(TransportUnit& unit) override;
-    std::string getStatus() override;
+    explicit Vehicle(const std::string& id);
+    ~Vehicle() override;
+
+    void load();
+    void depart();
+    void arrive();
+    void delay();
+    void resume();
+
+    std::string getStatus() const;
+    std::string report() const;
+
+    void setState(VehicleState* newState);
+
+    std::string getId() const override { return id; }
+
+private:
+    std::string id;
+    VehicleState* currentState;
 };
+
 #endif
