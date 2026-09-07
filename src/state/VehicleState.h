@@ -1,8 +1,8 @@
 #ifndef VEHICLESTATE_H
 #define VEHICLESTATE_H
- 
+
 #include <string>
- 
+
 class Vehicle;
 
 class VehicleState {

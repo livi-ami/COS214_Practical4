@@ -3,7 +3,7 @@
 #include "DelayedState.h"
 #include "../vehicle/Vehicle.h"
 #include <iostream>
- 
+
 InTransitState* InTransitState::instance() {
     static InTransitState singleton;
     return &singleton;

@@ -3,7 +3,7 @@
 
 #include "VehicleState.h"
 
-//initial state
+// initial state
 class WaitingToLoadState : public VehicleState {
 public:
     static WaitingToLoadState* instance();
@@ -15,7 +15,7 @@ public:
     std::string describe() const override;
 
 private:
-    WaitingToLoadState() = default; //singleton: construct only via instance()
+    WaitingToLoadState() = default; // singleton: construct only via instance()
 };
 
 #endif

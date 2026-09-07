@@ -2,7 +2,7 @@
 #define DELAYEDSTATE_H
  
 #include "VehicleState.h"
- 
+
 //NOT a singleton
 class DelayedState : public VehicleState {
 public:

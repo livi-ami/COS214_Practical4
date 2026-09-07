@@ -15,7 +15,7 @@ void WaitingToLoadState::load(Vehicle& vehicle) {
 }
 
 void WaitingToLoadState::delay(Vehicle& vehicle) {
-    std::cout << "Vehicle " << vehicle.getId() << " delayed while waiting to load.\n";
+    std::cout << "Vehicle " << vehicle.getId() << " has been delayed while waiting to load.\n";
     vehicle.setState(new DelayedState(this));
 }
 

@@ -4,7 +4,7 @@
 #include "VehicleState.h"
 
 class InTransitState : public VehicleState {
-public:
+public: 
     static InTransitState* instance();
 
     void arrive(Vehicle& vehicle) override;
