@@ -6,7 +6,7 @@
 #include "TransportDecorator.h"
 #include <string>
 
-enum class insurance{
+enum class Insurance{
     INSURED,
     NOT_INSURED
    
@@ -15,11 +15,13 @@ enum class insurance{
 
 class InsuranceCoverageDecorator : public TransportDecorator {
 private:
-string insurance;
+   Insurance currentInsurance; 
 
     public:
-    InsuranceCoverageDecorator(string insurance_,TransportUnit* child);
-    void print()const override ;
+    InsuranceCoverageDecorator(Insurance insurance_,TransportUnit* child);
+  
+    std::string getStatus() override; 
+    void depart(TransportUnit& unit) override;
 };
 
 #endif

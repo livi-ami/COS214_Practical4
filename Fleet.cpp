@@ -1,11 +1,11 @@
 #include "Fleet.h"
-#include "../iterator/FullFleetIterator.h"
+#include "FullFleetIterator.h"
 #include <vector>
 #include <string>
 #include <iostream>
 using namespace std;
 
-Fleet::Fleet(string id):id(id){}
+Fleet::Fleet(std::string id):id(id){}
 
 Fleet::~Fleet(){
     for(size_t i=0; i<ships.size(); ++i){
@@ -36,6 +36,14 @@ string Fleet::getId(){
 vector<TransportUnit*>& Fleet::getChildren(){
     return ships;
 }
-void Fleet::print() const {
-    cout << "Fleet: " << id << endl;
+
+void Fleet::depart(TransportUnit& unit) {
+    for (auto child : ships) { // Loops through its internal vector
+        if (child != nullptr) {
+            child->depart(unit);
+        }
+    }
+}
+std::string Fleet::getStatus() {
+    return "Fleet [" + id + "]";
 }

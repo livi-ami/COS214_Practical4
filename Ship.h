@@ -6,12 +6,13 @@
 using namespace std;
 
 class TransportUnit;
+class Iterator;
 
 class Ship: public TransportUnit{
     private:
         friend class DelayedVehicleIterator;
-        vector<TransportUnit*> cargoHold;
-        string id;
+        std::vector<TransportUnit*> cargoHold;
+        std::string id;
     public:
         Ship(string id);
         ~Ship();
@@ -19,10 +20,13 @@ class Ship: public TransportUnit{
         void addUnit(TransportUnit* unit);
         void add(TransportUnit* child) override;//added this 
         void removeUnit(TransportUnit* unit);
-        string getId();
-        vector<TransportUnit*>& getChildren();
+        std::string getId();
+        std::vector<TransportUnit*>& getChildren();
         VehicleState* getState() const override;
-        void print() const override;
+    
+        void depart(TransportUnit& unit) override;
+        std::string getStatus() override; 
+
 };
 
 #endif

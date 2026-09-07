@@ -6,7 +6,7 @@
 #include "TransportDecorator.h"
 #include <string>
 
-enum class status{
+enum class STATUS{
     CLEARED,
     PENDING
 };
@@ -14,12 +14,14 @@ enum class status{
 
 class CustomClearanceDecorator: public TransportDecorator{
 private:
-std::string status;
+STATUS currentStatus; 
 
     public:
-    CustomClearanceDecorator(std::string status_,TransportUnit* child);
-    void print() const override;
-
+    CustomClearanceDecorator(STATUS status_,TransportUnit* child);
+  
+    void setCustomsStatus(STATUS newStatus);
+    void depart(TransportUnit& unit) override ;
+    std::string getStatus() override ;
 };
 
 

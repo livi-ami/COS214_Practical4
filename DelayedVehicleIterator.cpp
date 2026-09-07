@@ -4,8 +4,8 @@
 #include "Fleet.h"
 #include "Ship.h"
 #include "CargoHold.h"
-#include "../vehicle/Vehicle.h"
-#include "../state/VehicleState.h"
+#include "Vehicle.h"
+#include "VehicleState.h"
 #include <vector>
 
 
@@ -31,6 +31,11 @@ void DelayedVehicleIterator::extractDelayedVehicles(TransportUnit* unit) {
             extractDelayedVehicles(child); 
         }
     } 
+    else if (auto cargoHold = dynamic_cast<CargoHold*>(unit)) {
+        for (auto child : cargoHold->getChildren()) {
+            extractDelayedVehicles(child);
+        }
+    }
     else {
 
         if (auto vehicle = dynamic_cast<Vehicle*>(unit)) {

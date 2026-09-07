@@ -25,11 +25,16 @@
         return wrapped->getChildren();
     }
 
-void TransportDecorator::print() const
-{
-    if (wrapped != 0)
-    {
-        wrapped->print();
+
+ void TransportDecorator::depart(TransportUnit& unit) {
+    if (wrapped != nullptr) {
+        wrapped->depart(unit); 
     }
 }
 
+std::string TransportDecorator::getStatus() {
+    if (wrapped != nullptr) {
+        return wrapped->getStatus();
+    }
+    return "";
+}

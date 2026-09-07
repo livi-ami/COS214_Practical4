@@ -9,7 +9,7 @@
 #include "TransportDecorator.h"
 #include <string>
 
-enum class condition{
+enum class Condition {
     GOOD,
     FAIR,
     POOR
@@ -18,13 +18,13 @@ enum class condition{
 
 class InspectionDecorator : public TransportDecorator {
 private:
-string condition;
+Condition currentCondition;
 
     public:
-    InspectionDecorator(std::string condition_,TransportUnit* child);
-    void print() const override;
-
-
+    InspectionDecorator(Condition  condition_,TransportUnit* child);
+  
+    void depart(TransportUnit& unit)override;
+    std::string getStatus() override; 
 };
 
 

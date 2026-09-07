@@ -1,7 +1,7 @@
 #include "InTransitState.h" 
 #include "DeliveredState.h"
 #include "DelayedState.h"
-#include "../vehicle/Vehicle.h"
+#include "Vehicle.h"
 #include <iostream>
 
 InTransitState* InTransitState::instance() {

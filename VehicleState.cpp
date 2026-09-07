@@ -1,5 +1,5 @@
 #include "VehicleState.h"
-#include "../vehicle/Vehicle.h"
+#include "Vehicle.h"
 #include <iostream>
 
 void VehicleState::load(Vehicle& vehicle)   { reject(vehicle, "load"); }

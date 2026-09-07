@@ -1,9 +1,9 @@
 #ifndef TRANSPORTDECORATOR_H
 #define TRANSPORTDECORATOR_H
 
-#include "../composite/TransportUnit.h"
+#include "TransportUnit.h"
 
-
+class Vehicle;
 class TransportDecorator:public TransportUnit{
  
     protected:
@@ -15,13 +15,14 @@ class TransportDecorator:public TransportUnit{
     TransportDecorator(const TransportDecorator&) = delete;
     TransportDecorator& operator=(const TransportDecorator&) = delete;
     void add(TransportUnit* child);
-     void print() const = 0;
+   
 
      //functions from the TransportUnit
      VehicleState* getState() const override;
      void addUnit(TransportUnit* unit) override;
      std::vector<TransportUnit*>& getChildren() override;
-
+       void depart(TransportUnit& unit) override;
+     std::string getStatus() override;
 
 
 };

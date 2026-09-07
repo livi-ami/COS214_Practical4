@@ -11,17 +11,20 @@ class CargoHold: public TransportUnit{
     private:
         friend class FullFleetIterator;
         //friend class DelayedVehicleIterator;
-        vector<TransportUnit*> vehicles;
-        string id;
+        std::vector<TransportUnit*> vehicles;
+        std::string id;
     public:
         CargoHold(string id);
         ~CargoHold();
         Iterator* createIterator();
         void addUnit(TransportUnit* unit);
         void removeUnit(TransportUnit* unit);
-        string getId();
-        vector<TransportUnit*>& getChildren();
-        void print() const override;
+        std::string getId();
+        std::vector<TransportUnit*>& getChildren();
+        
+        void depart(TransportUnit& unit) override;
+        std::string getStatus() override; 
+
 };
 
 #endif

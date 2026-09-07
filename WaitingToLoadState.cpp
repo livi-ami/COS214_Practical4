@@ -1,7 +1,7 @@
 #include "WaitingToLoadState.h"
 #include "LoadedState.h"
 #include "DelayedState.h"
-#include "../vehicle/Vehicle.h"
+#include "Vehicle.h"
 #include <iostream>
 
 WaitingToLoadState* WaitingToLoadState::instance() {

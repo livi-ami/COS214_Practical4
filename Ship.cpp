@@ -1,5 +1,5 @@
 #include "Ship.h"
-#include "../iterator/DelayedVehicleIterator.h"
+#include "DelayedVehicleIterator.h"
 #include <vector>
 #include <iostream>
 #include <string>
@@ -44,6 +44,14 @@ string Ship::getId(){
 vector<TransportUnit*>& Ship::getChildren(){
     return cargoHold;
 }
-void Ship::print() const {
-    cout << "Ship: " << id << endl;
+
+void Ship::depart(TransportUnit& unit) {
+    for (auto child : getChildren()) { 
+        if (child != nullptr) {
+            child->depart(unit);
+        }
+    }
+}
+std::string Ship::getStatus() {
+    return "Ship [" + id + "]";
 }

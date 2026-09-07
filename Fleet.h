@@ -3,7 +3,7 @@
 #include "TransportUnit.h"
 #include <vector>
 #include <string>
-using namespace std;
+
 
 class VehicleState;
 class Iterator;
@@ -12,17 +12,20 @@ class Fleet: public TransportUnit{
     private:
         friend class FullFleetIterator;
         //friend class DelayedVehicleIterator;
-        vector<TransportUnit*> ships;
-        string id;
+        std::vector<TransportUnit*> ships;
+        std::string id;
     public:
-        Fleet(string id);
+        Fleet(std::string id);
         ~Fleet();
         Iterator* createIterator();
         void addUnit(TransportUnit* unit);
         void removeUnit(TransportUnit* unit);
-        string getId();
-        vector<TransportUnit*>& getChildren();
-        void print() const override;
+        std::string getId();
+        std::vector<TransportUnit*>& getChildren();
+       
+        void depart(TransportUnit& unit) override;
+        std::string getStatus() override; 
+        
 };
 
 #endif

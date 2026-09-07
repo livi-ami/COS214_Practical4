@@ -9,13 +9,15 @@
 
 FullFleetIterator::FullFleetIterator(const TransportUnit& fleet_){
     curPos=0;
-    snapshot=fleet_.getChildren();
+    for (auto child : const_cast<TransportUnit&>(fleet_).getChildren()) {
+        createSnapshot(child);
+    }
 }
 void FullFleetIterator::createSnapshot(TransportUnit* unit){
         if (unit == nullptr) {
                 return;
         }
-       snpshot.push_back(unit);
+       snapshot.push_back(unit);
        if (auto fleet = dynamic_cast<Fleet*>(unit)) {
         for (auto child : fleet->getChildren()) { 
             createSnapshot(child); 
@@ -24,6 +26,11 @@ void FullFleetIterator::createSnapshot(TransportUnit* unit){
     else if (auto ship = dynamic_cast<Ship*>(unit)) {
         for (auto child : ship->getChildren()) {
             createSnapshot(child); 
+        }
+    }
+    else if (auto cargoHold = dynamic_cast<CargoHold*>(unit)) {
+        for (auto child : cargoHold->getChildren()) {
+            createSnapshot(child);
         }
     }
 

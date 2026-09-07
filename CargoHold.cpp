@@ -1,5 +1,5 @@
 #include "CargoHold.h"
-#include "../iterator/DelayedVehicleIterator.h"
+#include "DelayedVehicleIterator.h"
 #include <vector>
 #include <iostream>
 #include <string>
@@ -37,6 +37,14 @@ vector<TransportUnit*>& CargoHold::getChildren(){
     return vehicles;
 }
 
-void CargoHold::print() const {
-    cout << "CargoHold: " << id << endl;
+
+void CargoHold::depart(TransportUnit& unit) {
+    for (auto child : getChildren()) {
+        if (child != nullptr) {
+            child->depart(unit); // Cascades down until it finally hits the Vehicles!
+        }
+    }
+}
+std::string CargoHold::getStatus() {
+    return "CargoHold [" + id + "]";
 }
