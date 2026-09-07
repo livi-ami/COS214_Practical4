@@ -1,16 +1,11 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get install -y build-essential
+RUN apt-get update && apt-get install -y build-essential gdb && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /taskforgeApp
 
 COPY src/ .
 
-RUN g++ -std=c++11 -static \ 
-    -I. \ 
-    -I./vehicle \
-    -I./iterator \
-    -I./transport \
-    -o taskforge $(find . -name "*.cpp") 
+RUN make
 
 CMD ["./taskforge"]
