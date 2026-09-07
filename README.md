@@ -75,6 +75,6 @@ docker run --name taskforgeApp taskforge-img
 | Student Name | Student Number |
 | -------- | -------- |
 | Thembelisha Skosana | u |
-| Joshua Piater-Boswell | u |
+| Rei Piater-Boswell | u25678592 |
 | Livia Webber | u24607852 |
 
